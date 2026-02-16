@@ -33,7 +33,7 @@ def processar_texto(texto_recebido):
         if chave in texto and chave != "padrao":
             return resposta
             
-    # Se não encontrar nada
+    # Caso não encontrar nada
     return dados.get("padrao", "Desculpe, não entendi.")
 
 # --- Envio WhatsApp ---
@@ -57,7 +57,7 @@ def enviar_resposta_whatsapp(numero, texto):
             response = requests.post(url, headers=headers, json=data)
             print(f"Status envio WhatsApp: {response.status_code}")
 
-            print(f"RESPOSTA DO FACEBOOK: {response.json()}") # <--- ADICIONE ISSO
+            print(f"RESPOSTA DO FACEBOOK: {response.json()}")
         else:
             print(f"MODO SIMULAÇÃO: Mensagem não enviada para a API (Token ausente).")
             print(f"Para o número {numero}: {texto}")
@@ -97,7 +97,6 @@ def webhook():
             enviar_resposta_whatsapp(numero, resposta_bot)
             
     except Exception as e:
-        # É normal dar erro em notificações de status (lido/entregue), ignoramos
         pass
 
     return jsonify({"status": "success"}), 200
