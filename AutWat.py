@@ -88,7 +88,7 @@ def webhook():
             numero = message['from']
             texto_usuario = message['text']['body']
             
-            print(f"\n📩 Recebido de {numero}: {texto_usuario}")
+            print(f"\n Recebido de {numero}: {texto_usuario}")
             
             # 1. Pensa
             resposta_bot = processar_texto(texto_usuario)
